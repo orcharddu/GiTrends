@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiTrending</title>
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./js/index.js" type="text/javascript"></script>
+<script src="./js/history.js" type="text/javascript"></script>
+<body>
+    <div class="header">
+        <div class="nav-left">
+            <ul>
+                <li><a href="#">GiTrending</a></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="./trending.html">Trending</a></li>
+                <li><a href="./about.html">About</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="search">
+            <div class="search-cover">
+                <span>An open source software</span><strong>popularity analysis</strong><span>tool</span><br>
+                <span class="last">for</span>
+                <img id="github-cover" src="./img/github.svg" alt="github">
+                <img id="gitlab-cover" src="./img/gitlab.svg" alt="gitlab">
+            </div>
+            <div class="search-bar">
+                <input type="search" autofocus="autofocus" placeholder="GitHub / GitLab Repository URL" autocomplete="off">
+                <button>GO</button>
+                <div class="search-history">
+                <div><span>History</span><!--<span class="search-history-clear">remove all</span> --></div>
+                    <ul>
+                    </ul>
+                </div>
+                <div class="search-tips">URL is not valid, e.g. github.com/github/docs<div></div></div>
+               
+            </div>
+        </div>
+    </div>
+</body>
+</html>
