@@ -86,7 +86,7 @@ $(function() {
      });
      
      $(".mask .error button").click(function() {
-        window.location.href = "/";
+        window.location.href = "./";
     })
     
 });
