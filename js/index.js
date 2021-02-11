@@ -28,7 +28,7 @@ $(function() {
             $(".search-bar button").triggerHandler("click");
             return false;
         }
-        return true
+        return true;
     });
 
     $(".search-bar button").click(function(){
@@ -54,7 +54,7 @@ $(function() {
         return false;
     });
 
-    $(".search-history").on("click", ".search-history-item", function(){
+    $(".search-history").on("mousedown", ".search-history-item", function(){
         var itemNum = $(".search-history>ul>li").length;
         var index = itemNum - $(this).index() - 1;
         var e = history.value.items[index];

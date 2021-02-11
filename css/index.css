@@ -118,9 +118,19 @@
     position: relative;
     border-bottom: .5px dashed rgb(212, 212, 212);
     font-size: 14px;
-    padding: 8px 15px; 
+    padding: 8px 15px;
+    padding-right: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     transition: 100ms;
 }
+
+.search-history-item span {
+
+    text-overflow: ellipsis;
+ 
+}
+
 .search-history li:hover {
     /* padding: 7px;
     font-size: 16px; */
