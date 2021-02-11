@@ -60,7 +60,7 @@ $(function() {
     $.ajax({
         type: "GET",
         url: "https://api.github.com/repos/" + owner + "/" + repo,
-        success: (result) => {
+        success: function(result){
             forks = result.forks;
             stars = result.stargazers_count;
             watchers = result.subscribers_count;
@@ -76,7 +76,7 @@ $(function() {
                 initChart(watchers, stars, forks);
             });
         },
-        error: (e) => {
+        error: function(e){
             console.log(e);
             $(".mask .loading").stop().fadeTo(800, 0, function(){
                 $(this).css("visibility", "hidden");
@@ -88,7 +88,6 @@ $(function() {
      $(".mask .error button").click(function() {
         window.location.href = "./";
     })
-    
 });
 
 

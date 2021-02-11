@@ -1,32 +1,9 @@
 
-        // add:function() {
-            
-        //     isValid = this.checkValid(this.input)
-        //     if(isValid.valid) {
-        //         //this.arr.push(isValid.type + " " + isValid.url);
-        //         var tmp = this.input.split(/.+.com\//)[1].split(/\//);
-        //         var user = tmp[0];
-        //         var repo = tmp[1].split(".git")[0];
-        //         var githubAPI = "https://api.github.com/repos/" + user + "/" + repo;
-        //         var vue = this;
-        //         console.log(githubAPI);
-        //         axios.get(githubAPI).then(
-        //             function(resp){
-        //                 vue.arr.push(resp.data);
-        //                 console.log(resp);
-        //             },
-        //             function(err) {
-        //                 console.log(err);
-        //             }
-        //         )
-        //     }
-            
-
 $(function() {
     
     var history = new History();
     var historyIns = "<li class=\"search-history-item\"><span></span><span class=\"search-history-remove\"></span></li>";
-    history.value.items.forEach(e => {
+    history.value.items.forEach(function(e) {
         $(".search-history ul").prepend(historyIns);
         $(".search-history-item:first span:first").text(e.site + ".com/" + e.owner + "/" + e.repo);
     });
