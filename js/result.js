@@ -83,9 +83,9 @@ $(function() {
                 $(".mask .error").css("visibility", "visible"); 
             });
         }
-     });
+    });
      
-     $(".mask .error button").click(function() {
+    $(".mask .error button").click(function() {
         window.location.href = "./";
     })
 });
