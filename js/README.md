@@ -10,7 +10,7 @@ node-red --userDir ./front-end/src/
 
 ## app is now running on
 
-[http://localhost:1880/](http://localhost:1880/)
+http://localhost:1880/
 
 
 
