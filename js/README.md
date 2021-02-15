@@ -16,7 +16,7 @@ http://localhost:1880/
 
 ## server back-end is on
 
-[http://localhost:1880/admin](http://localhost:1880/admin)
+http://localhost:1880/admin
 
 > **For security reasons you need to login to access server backend.**
 >
@@ -34,7 +34,7 @@ node-red doesn't support relative path, so I used some trick to load static file
 
 ## public webpage is on
 
-[https://gitrends.com/](https://gitrends.com/)
+https://gitrends.com/
 
 > It is using node-red and also running in a docker container, and I also get a SSL certificate for it, so it is under https protocol using 443 port now. Since node-red doesn't support neither port forwarding nor enabling http and https at the same time, our page now only support https, using http will take you to 404.
 
@@ -42,7 +42,7 @@ node-red doesn't support relative path, so I used some trick to load static file
 
 ## API server is on
 
-[http://api.gitrends.com/](http://api.gitrends.com/)
+http://api.gitrends.com/
 
 **This will be the mock API for the front-end to mock up while back-end is developing, it is well defined. You can choose the data you find useful.**
 
