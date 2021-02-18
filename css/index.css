@@ -33,17 +33,23 @@
     margin-top: 20px;
 }
 
-.search-cover img {
-    height: 50px;
-    margin: 0px 5px;
+.search-cover #github-cover {
+    display: inline-block;
     margin-top: 20px;
-    /* 使文字居中 */
-    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+    background: url("../img/github.svg") center no-repeat;
+    background-size: 60px 60px;
 }
 
 .search-cover #gitlab-cover {
-    height: 45px;
-    margin-top: 22px;
+    display: inline-block;
+    margin-top: 23px;
+    margin-left: 3px;
+    width: 55px;
+    height: 55px;
+    background: url("../img/gitlab.svg") center no-repeat;
+    background-size: 55px 55px;
 }
 
 .search-bar {

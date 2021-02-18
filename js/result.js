@@ -36,27 +36,12 @@ function initChart(watchers, stars, forks){
 }
 
 
-$(function() {
-   
-    var site = getParam("site");
-    var owner = getParam("owner");
-    var repo = getParam("repo");
-    var forks, stars, watchers;
-    $(".result-title a").text(owner + "/" + repo);
-    if(site == "github"){
-        $(".result-title a").attr("href", "https://github.com/" + owner + "/" + repo);
-    }else if(site == "gitlab"){
-        $(".result-title a").attr("href", "https://gitlab.com/" + owner + "/" + repo);
-    }
-    
+var site = getParam("site");
+var owner = getParam("owner");
+var repo = getParam("repo");
+var forks, stars, watchers;
 
-    // $(".content").css("filter", "blur(2px)");
-    // $(".mask").stop().fadeTo(1000, 0, function() {
-    //     $(this).css("visibility", "hidden");
-    //     $(".content").css("filter", "none");
-    //     initChart(watchers, stars, forks);
-    // });
-
+function getGitHubStats() {
     $.ajax({
         type: "GET",
         url: "https://api.github.com/repos/" + owner + "/" + repo,
@@ -84,7 +69,52 @@ $(function() {
             });
         }
     });
-     
+}
+
+function getGitLabStats() {
+    $.ajax({
+        type: "GET",
+        url: "http://api.gitrends.com/stats/" + site + "/" + owner + "/" + repo,
+        success: function(result){
+            watchers = result.watchers;
+            forks = result.forks;
+            stars = result.stars;
+            $("#name").text(repo);
+            $("#owner").text(owner);
+            $("#watchers").text(watchers);
+            $("#stars").text(stars);
+            $("#forks").text(forks);
+            $(".content").css("filter", "blur(2px)");
+            $(".mask").stop().fadeTo(1000, 0, function() {
+                $(this).css("visibility", "hidden");
+                $(".content").css("filter", "none");
+                initChart(watchers, stars, forks);
+            });
+        },
+        error: function(e){
+            console.log(e);
+            $(".mask .loading").stop().fadeTo(800, 0, function(){
+                $(this).css("visibility", "hidden");
+                $(".mask .error").css("visibility", "visible"); 
+            });
+        }
+    });
+}
+
+
+$(function() {
+
+    $(".result-title a").text(owner + "/" + repo);
+    if(site == "github"){
+        $(".result-title a").attr("href", "https://github.com/" + owner + "/" + repo);
+        $(".result-title span").text("GitHub");
+        getGitHubStats()
+    }else if(site == "gitlab"){
+        $(".result-title a").attr("href", "https://gitlab.com/" + owner + "/" + repo);
+        $(".result-title span").text("GitLab");
+        getGitLabStats()
+    }
+    
     $(".mask .error button").click(function() {
         window.location.href = "./";
     })
