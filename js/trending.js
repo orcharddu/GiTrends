@@ -82,7 +82,6 @@ function loadGitLabTrending(show) {
                 $(".trending-gitlab .item-content-forks:last").text(item.forks);
             }
             $(".trending-gitlab .item:last").css("border", "none");
-            
             $(".trending-gitlab").on("click", ".item", function() {
                 var i = $(this).index();
                 var item = result.trendingList[i];
@@ -129,7 +128,7 @@ function showGitLabTrending() {
 }
 
 function analyzeUrl(url) {
-    var regex =  /^(https?:\/\/|)(www.|)(github|gitlab)(.com|)\/([\d\w-]+)\/([\d\w-]+)(.git|)\/?$/i;
+    var regex =  /^(https?:\/\/|)(www.|)(github|gitlab)(.com|)\/([\d\w.-]+)\/([\d\w.-]+)(.git|)\/?$/i;
         var result = url.match(regex);
         var site = result[3].toLowerCase(), owner = result[5], repo = result[6];
         var newUrl = "./result.html?site=" + site + "&owner=" + owner + "&repo=" + repo;

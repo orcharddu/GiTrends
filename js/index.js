@@ -33,7 +33,7 @@ $(function() {
 
     $(".search-bar button").click(function(){
         var url = $(".search-bar input").val().trim();
-        var regex =  /^(https?:\/\/|)(www.|)(github|gitlab)(.com|)\/([\d\w-]+)\/([\d\w-]+)(.git|)\/?$/i;
+        var regex =  /^(https?:\/\/|)(www.|)(github|gitlab)(.com|)\/([\d\w.-]+)\/([\d\w.-]+)(.git|)\/?$/i;
         var result = url.match(regex);
         if(result){
             var site = result[3].toLowerCase(), owner = result[5], repo = result[6];
