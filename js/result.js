@@ -45,6 +45,10 @@ function getGitHubStats(onGetStatsSuccess, onGetStatsException) {
         type: "GET",
         url: "https://api.github.com/repos/" + owner + "/" + repo,
         success: function(result){
+            watchers = result.subscribers_count;
+            stars = result.stargazers_count;
+            forks = result.forks;
+            description = result.description == null || result.description == "" ? "No description" : result.description;
             onGetStatsSuccess(result);
         },
         error: function(e){
@@ -58,6 +62,10 @@ function getGitLabStats(onGetStatsSuccess, onGetStatsException) {
         type: "GET",
         url: "https://api.gitrends.com/stats/" + site + "/" + owner + "/" + repo,
         success: function(result){
+            watchers = result.watchers;
+            stars = result.stars;
+            forks = result.forks;
+            description = result.description == null || result.description == "" ? "No description" : result.description;
             onGetStatsSuccess(result);
         },
         error: function(e){
@@ -98,10 +106,6 @@ var onShow = function() {
 }
 
 var onGetStatsSuccess = function(result) {
-    forks = result.forks;
-    stars = result.stargazers_count;
-    watchers = result.subscribers_count;
-    description = result.description == null || result.description == "" ? "No description" : result.description;
     $("#name").text(repo);
     $("#owner").text(owner);
     $("#watchers").text(watchers);
@@ -134,13 +138,14 @@ $(function() {
         $(".result-title a").attr("href", "https://gitlab.com/" + owner + "/" + repo);
         $(".result-title span").text("GitLab");
         getGitLabStats(onGetStatsSuccess);
-    } else {
-        $(".mask").stop().fadeTo(1000, 0, function() {
-            $(this).css("visibility", "hidden");
-            $(".content").css("filter", "none");
-            initChart(12, 44, 77);
-        });
     }
+    //  else {
+    //     $(".mask").stop().fadeTo(1000, 0, function() {
+    //         $(this).css("visibility", "hidden");
+    //         $(".content").css("filter", "none");
+    //         initChart(12, 44, 77);
+    //     });
+    // }
     
     $(".mask .error button").click(function() {
         window.location.href = "./";
