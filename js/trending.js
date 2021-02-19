@@ -21,7 +21,7 @@ function loadGitHubTrending(show) {
 
     $.ajax({
         type: "GET",
-        url: "http://api.gitrends.com/trending/github",
+        url: "https://api.gitrends.com/trending/github",
         success: function(result) {
             for(var i in result.trendingList) {
                 var item = result.trendingList[i];
@@ -70,7 +70,7 @@ function loadGitLabTrending(show) {
 
     $.ajax({
         type: "GET",
-        url: "http://api.gitrends.com/trending/gitlab",
+        url: "https://api.gitrends.com/trending/gitlab",
         success: function(result) {
             for(var i in result.trendingList) {
                 var item = result.trendingList[i];

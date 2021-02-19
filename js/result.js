@@ -74,7 +74,7 @@ function getGitHubStats() {
 function getGitLabStats() {
     $.ajax({
         type: "GET",
-        url: "http://api.gitrends.com/stats/" + site + "/" + owner + "/" + repo,
+        url: "https://api.gitrends.com/stats/" + site + "/" + owner + "/" + repo,
         success: function(result){
             watchers = result.watchers;
             forks = result.forks;
