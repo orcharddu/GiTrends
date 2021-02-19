@@ -110,30 +110,52 @@
 .result-repo {
     float: left;
     width: 300px;
-    padding: 15px 5px;
     margin: 5px;
+    margin-bottom: 30px;
 }
 
 .result-twitter {
+    position: relative;
     float: left;
-    width: 450px;
-    padding: 15px 5px;
+    width: 580px;
     margin: 5px;
+    margin-bottom: 30px;
+}
+
+.result-twitter .spinner {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 50px;
+    box-shadow: inset 0 0 0 .07em rgb(209, 209, 209);
+    visibility: hidden;
+}
+
+.result-twitter .spinner i:after {
+    box-shadow: inset 0 0 0 .07em rgb(71, 71, 71);
 }
 
 .title {
     font-size: 28px;
     line-height: 28px;
     font-weight: 700;
-    margin-left: 5px;
-    margin-bottom: 10px;
+    padding: 15px;
+    border-bottom: 0.5px dashed grey;
+    cursor: default;
+    user-select: none;
+}
+
+.chart {
+    margin-top: 20px;
 }
 
 .item {
     font-size: 18px;
     font-weight: 300;
-    padding: 10px;
+    padding: 10px 15px;
     border-bottom: 0.5px dashed grey ;
+    cursor: default;
     transition: 200ms;
 }
 
@@ -149,9 +171,36 @@
     font-size: 16px;
     font-weight: 400;
     text-overflow: ellipsis;
+    cursor: text;
 }
 
-.chart {
-    margin-top: 20px;
+#description {
+    margin-top: 5px;
+    text-indent: 1em;
+    font-size: 16px;
+    font-weight: 400;
+    word-wrap: break-word;
+    overflow: hidden;
+    cursor: text;
 }
+
+.comment {
+    border-bottom: 0.5px dashed grey ;
+    padding: 10px 15px;
+    padding-left: 30px;
+    color: #222222;
+    font-size: 14px;
+    font-weight: 400;
+    text-indent: 1em;
+    cursor: default;
+    word-wrap: break-word;
+    overflow: hidden;
+    transition: 200ms;
+}
+
+.comment:hover {
+    background-color: #dbdbdb;
+}
+
+
 

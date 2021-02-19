@@ -34,7 +34,6 @@ function loadGitHubTrending(show) {
                 $(".trending-github .item-content-stars-today:last").text(item.starsToday);
             }
             $(".trending-github .item:last").css("border", "none");
-            
             $(".trending-github").on("click", ".item", function() {
                 var i = $(this).index();
                 var item = result.trendingList[i];

@@ -97,7 +97,7 @@
     font-weight: 200;
     line-height: 60px;
     cursor: default;
-    user-select:none;
+    user-select: none;
 }
 
 .trending-list-title #github-svg {
@@ -163,7 +163,6 @@
     font-size: 18px;
     color: #0366D6;
     word-wrap: break-word;
-    word-break: break-all;
     overflow: hidden;
 }
 
@@ -175,7 +174,6 @@
     font-weight: 400;
     line-height: 24px;
     word-wrap: break-word;
-    word-break: break-all;
     overflow: hidden;
 }
 

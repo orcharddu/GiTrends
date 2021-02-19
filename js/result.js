@@ -35,91 +35,116 @@ function initChart(watchers, stars, forks){
     });
 }
 
-
 var site = getParam("site");
 var owner = getParam("owner");
 var repo = getParam("repo");
-var forks, stars, watchers;
+var forks, stars, watchers, description;
 
-function getGitHubStats() {
+function getGitHubStats(onGetStatsSuccess, onGetStatsException) {
     $.ajax({
         type: "GET",
         url: "https://api.github.com/repos/" + owner + "/" + repo,
         success: function(result){
-            forks = result.forks;
-            stars = result.stargazers_count;
-            watchers = result.subscribers_count;
-            $("#name").text(repo);
-            $("#owner").text(owner);
-            $("#watchers").text(watchers);
-            $("#stars").text(stars);
-            $("#forks").text(forks);
-            $(".content").css("filter", "blur(2px)");
-            $(".mask").stop().fadeTo(1000, 0, function() {
-                $(this).css("visibility", "hidden");
-                $(".content").css("filter", "none");
-                initChart(watchers, stars, forks);
-            });
+            onGetStatsSuccess(result);
         },
         error: function(e){
-            console.log(e);
-            $(".mask .loading").stop().fadeTo(800, 0, function(){
-                $(this).css("visibility", "hidden");
-                $(".mask .error").css("visibility", "visible"); 
-            });
+            onGetStatsException(e);
         }
     });
 }
 
-function getGitLabStats() {
+function getGitLabStats(onGetStatsSuccess, onGetStatsException) {
     $.ajax({
         type: "GET",
         url: "https://api.gitrends.com/stats/" + site + "/" + owner + "/" + repo,
         success: function(result){
-            watchers = result.watchers;
-            forks = result.forks;
-            stars = result.stars;
-            $("#name").text(repo);
-            $("#owner").text(owner);
-            $("#watchers").text(watchers);
-            $("#stars").text(stars);
-            $("#forks").text(forks);
-            $(".content").css("filter", "blur(2px)");
-            $(".mask").stop().fadeTo(1000, 0, function() {
+            onGetStatsSuccess(result);
+        },
+        error: function(e){
+            onGetStatsException(e);
+        }
+    });
+}
+
+function getTweets() {
+    $(".result-twitter .spinner").css("visibility", "visible");
+    $(".comments").css("display", "none");
+    var insertComments = "<li class=\"comment\"></li>";
+    $.ajax({
+        type: "GET",
+        url: "https://api.gitrends.com/analysis/twitter/" + repo,
+        success: function(result){
+            for(var i in result.commentList) {
+                var item = result.commentList[i];
+                $(".comments").append(insertComments);
+                $(".comments .comment:last").text(item.text);
+            }
+            $(".comments .comment:last").css("border", "none");
+            $(".result-twitter .spinner").stop().fadeTo(1000, 0, function() {
                 $(this).css("visibility", "hidden");
-                $(".content").css("filter", "none");
-                initChart(watchers, stars, forks);
-            });
+                $(".comments").css("display", "block");
+           });
         },
         error: function(e){
             console.log(e);
-            $(".mask .loading").stop().fadeTo(800, 0, function(){
-                $(this).css("visibility", "hidden");
-                $(".mask .error").css("visibility", "visible"); 
-            });
         }
     });
 }
 
 
-$(function() {
+var onShow = function() {
+    $(".content").css("filter", "none");
+    initChart(watchers, stars, forks);
+}
 
+var onGetStatsSuccess = function(result) {
+    forks = result.forks;
+    stars = result.stargazers_count;
+    watchers = result.subscribers_count;
+    description = result.description == null || result.description == "" ? "No description" : result.description;
+    $("#name").text(repo);
+    $("#owner").text(owner);
+    $("#watchers").text(watchers);
+    $("#stars").text(stars);
+    $("#forks").text(forks);
+    $("#description").text(description);
+    $(".content").css("filter", "blur(2px)");
+    $(".mask").stop().fadeTo(1000, 0, function() {
+        $(this).css("visibility", "hidden");
+        onShow();
+    });
+    getTweets();
+}
+
+var onGetStatsException = function(e) {
+    console.log(e);
+    $(".mask .loading").stop().fadeTo(800, 0, function(){
+        $(this).css("visibility", "hidden");
+        $(".mask .error").css("visibility", "visible"); 
+    });
+}
+
+$(function() {
     $(".result-title a").text(owner + "/" + repo);
     if(site == "github"){
         $(".result-title a").attr("href", "https://github.com/" + owner + "/" + repo);
         $(".result-title span").text("GitHub");
-        getGitHubStats()
+        getGitHubStats(onGetStatsSuccess);
     }else if(site == "gitlab"){
         $(".result-title a").attr("href", "https://gitlab.com/" + owner + "/" + repo);
         $(".result-title span").text("GitLab");
-        getGitLabStats()
+        getGitLabStats(onGetStatsSuccess);
+    } else {
+        $(".mask").stop().fadeTo(1000, 0, function() {
+            $(this).css("visibility", "hidden");
+            $(".content").css("filter", "none");
+            initChart(12, 44, 77);
+        });
     }
     
     $(".mask .error button").click(function() {
         window.location.href = "./";
     })
 });
-
-
 
 
