@@ -35,21 +35,21 @@
 
 .search-cover #github-cover {
     display: inline-block;
-    margin-top: 20px;
-    width: 60px;
-    height: 60px;
+    margin-top: 23px;
+    width: 55px;
+    height: 55px;
     background: url("../img/github.svg") center no-repeat;
-    background-size: 60px 60px;
+    background-size: contain;
 }
 
 .search-cover #gitlab-cover {
     display: inline-block;
-    margin-top: 23px;
+    margin-top: 25px;
     margin-left: 3px;
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     background: url("../img/gitlab.svg") center no-repeat;
-    background-size: 55px 55px;
+    background-size: contain;
 }
 
 .search-bar {
