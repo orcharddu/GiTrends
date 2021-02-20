@@ -13,7 +13,7 @@ function loadGitHubTrending(show) {
     insertGitHub += "            <span class=\"item-content-forks\"></span>";
     insertGitHub += "            <span>forks</span>";
     insertGitHub += "            |";
-    insertGitHub += "            <span class=\"item-content-stars-today\">2000</span>";
+    insertGitHub += "            <span class=\"item-content-stars-today\"></span>";
     insertGitHub += "            <span>stars today</span>";
     insertGitHub += "        </div>";
     insertGitHub += "    </div>";
