@@ -133,11 +133,11 @@ $(function() {
     if(site == "github"){
         $(".result-title a").attr("href", "https://github.com/" + owner + "/" + repo);
         $(".result-title span").text("GitHub");
-        getGitHubStats(onGetStatsSuccess);
+        getGitHubStats(onGetStatsSuccess, onGetStatsException);
     }else if(site == "gitlab"){
         $(".result-title a").attr("href", "https://gitlab.com/" + owner + "/" + repo);
         $(".result-title span").text("GitLab");
-        getGitLabStats(onGetStatsSuccess);
+        getGitLabStats(onGetStatsSuccess, onGetStatsException);
     }
     //  else {
     //     $(".mask").stop().fadeTo(1000, 0, function() {
