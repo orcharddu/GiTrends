@@ -1,0 +1,198 @@
+
+.hidden {
+    display: none; 
+}
+
+.content {
+    width: 900px;
+    margin: auto;
+}
+
+.search {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.search-cover span {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 10px;
+    font-size: 34px;
+    font-weight: 100;
+    vertical-align: middle;
+}
+
+.search-cover strong {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 10px;
+    font-size: 34px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
+.search-cover .last {
+    margin-top: 20px;
+}
+
+.search-cover #github-cover {
+    display: inline-block;
+    margin-top: 23px;
+    width: 55px;
+    height: 55px;
+    background: url("../img/github.svg") center no-repeat;
+    background-size: contain;
+}
+
+.search-cover #gitlab-cover {
+    display: inline-block;
+    margin-top: 25px;
+    margin-left: 3px;
+    width: 50px;
+    height: 50px;
+    background: url("../img/gitlab.svg") center no-repeat;
+    background-size: contain;
+}
+
+.search-bar {
+    display: inline-block;
+    position: relative;
+    margin-top: 40px;
+}
+
+.search-bar input {
+    width: 400px;
+    height: 40px;
+    padding: 0px 15px;
+    border: none; 
+    border-radius: 3px; 
+    font-size: 16px;
+    box-shadow: 0px 2px 5px 1px rgba(0,0,0,.1);
+    transition: 200ms;
+    outline: none;
+}
+
+.search-bar input:hover  {
+    box-shadow: 0px 2px 10px 1px rgba(0,0,0,.2);
+}
+
+.search-bar button {
+    width: 100px;
+    height: 40px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 3px; 
+    background: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    vertical-align: top;
+    box-shadow: 0px 2px 5px 1px rgba(0,0,0,.1);
+    transition: 200ms;
+    outline: none;
+}
+.search-bar button:hover {
+    background-color: #F2F2F2;
+    box-shadow: 0px 2px 10px 1px rgba(0,0,0,.2);
+}
+
+.search-bar button:active{
+    background-color: #BFBFBF;
+}
+
+.search-auto {
+    position: absolute;
+    top: 50px;
+    left: 0%;
+    width: 400px;
+    padding: 5px 0px;
+    border-radius: 3px;
+    background-color: #fff;
+    text-align: left;
+    box-shadow: 0px 2px 10px 1px rgba(0,0,0,.2);
+    cursor: default;
+    opacity: 0;
+}
+
+.search-auto div:not(.d-flex) {
+    padding: 5px 10px;
+    padding-top: 0px;
+    border-bottom: .5px solid rgb(212, 212, 212);
+    color: grey;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.search-auto div:last-of-type {
+    margin-top: 10px;
+}
+
+.search-auto-item {
+    position: relative;
+    border-bottom: .5px dashed rgb(212, 212, 212);
+    font-size: 14px;
+    padding: 8px 15px;
+    padding-right: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: 100ms;
+}
+
+.search-auto-item span {
+    text-overflow: ellipsis;
+}
+
+.search-auto-item:last-child {
+    border: none;
+}
+
+.search-auto li:hover {
+    /* padding: 7px;
+    font-size: 16px; */
+    background-color: #dbdbdb;
+}
+
+.search-history-remove {
+    visibility: hidden;
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    right: 10px;
+    /* 纵向居中 */
+    transform: translate(0, -50%);
+    background: url("../img/close.svg") center no-repeat;
+    background-size: 16px 16px;
+}
+
+.search-auto li:hover>.search-history-remove { 
+    visibility: visible;
+}
+
+.search-tips {
+    position: absolute;
+    left: 43%;
+    bottom: 52px;
+    padding: 6px 15px;
+    transform: translate(-50%, 0);
+    border-radius: 3px;
+    background-color: #F44336;
+    color: white;
+    white-space:nowrap;
+    box-shadow: 0px 2px 10px 1px rgba(0,0,0,.2);
+    cursor: default;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.search-tips div {
+    position: absolute;
+    left: 50%;
+    bottom: -14px;
+    transform: translate(-50%, 0);
+    border-width: 8px;
+    border-style: solid;
+    border-color: #F44336 transparent transparent transparent;
+}

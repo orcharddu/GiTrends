@@ -1,0 +1,193 @@
+[
+    {
+        "id": "383de0fe.cc4b3",
+        "type": "tab",
+        "label": "流程 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e7b349b.3fbabb8",
+        "type": "http in",
+        "z": "383de0fe.cc4b3",
+        "name": "",
+        "url": "/index",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 160,
+        "wires": [
+            [
+                "e43b404d.9bfd8"
+            ]
+        ]
+    },
+    {
+        "id": "bff23199.f1309",
+        "type": "http response",
+        "z": "383de0fe.cc4b3",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "63ffaa2a.915a64",
+        "type": "http in",
+        "z": "383de0fe.cc4b3",
+        "name": "",
+        "url": "/result",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 260,
+        "wires": [
+            [
+                "2a95fdae.a324e2"
+            ]
+        ]
+    },
+    {
+        "id": "cdf3f94c.9e4b48",
+        "type": "http response",
+        "z": "383de0fe.cc4b3",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "7731c032.0788c",
+        "type": "http in",
+        "z": "383de0fe.cc4b3",
+        "name": "",
+        "url": "/trending",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "249e0d4.2be3bf2"
+            ]
+        ]
+    },
+    {
+        "id": "3dbb9ae7.be8e96",
+        "type": "http response",
+        "z": "383de0fe.cc4b3",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "636007d9.b0bb28",
+        "type": "http in",
+        "z": "383de0fe.cc4b3",
+        "name": "",
+        "url": "/about",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 460,
+        "wires": [
+            [
+                "a0bc8571.272778"
+            ]
+        ]
+    },
+    {
+        "id": "3133b4cc.38233c",
+        "type": "http response",
+        "z": "383de0fe.cc4b3",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "e43b404d.9bfd8",
+        "type": "function",
+        "z": "383de0fe.cc4b3",
+        "name": "index",
+        "func": "var fs      = global.get(\"fs\");\nvar path    = global.get(\"path\");\nvar dirname = global.get(\"dirname\");\nmsg.payload = fs.readFileSync(path.join(dirname, \"/static/index.html\"), \"utf8\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 410,
+        "y": 160,
+        "wires": [
+            [
+                "bff23199.f1309"
+            ]
+        ]
+    },
+    {
+        "id": "2a95fdae.a324e2",
+        "type": "function",
+        "z": "383de0fe.cc4b3",
+        "name": "result",
+        "func": "var fs      = global.get(\"fs\");\nvar path    = global.get(\"path\");\nvar dirname = global.get(\"dirname\");\nmsg.payload = fs.readFileSync(path.join(dirname, \"/static/result.html\"), \"utf8\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 410,
+        "y": 260,
+        "wires": [
+            [
+                "cdf3f94c.9e4b48"
+            ]
+        ]
+    },
+    {
+        "id": "249e0d4.2be3bf2",
+        "type": "function",
+        "z": "383de0fe.cc4b3",
+        "name": "trending",
+        "func": "var fs      = global.get(\"fs\");\nvar path    = global.get(\"path\");\nvar dirname = global.get(\"dirname\");\nmsg.payload = fs.readFileSync(path.join(dirname, \"/static/trending.html\"), \"utf8\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 420,
+        "y": 360,
+        "wires": [
+            [
+                "3dbb9ae7.be8e96"
+            ]
+        ]
+    },
+    {
+        "id": "a0bc8571.272778",
+        "type": "function",
+        "z": "383de0fe.cc4b3",
+        "name": "about",
+        "func": "var fs      = global.get(\"fs\");\nvar path    = global.get(\"path\");\nvar dirname = global.get(\"dirname\");\nmsg.payload = fs.readFileSync(path.join(dirname, \"/static/about.html\"), \"utf8\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 410,
+        "y": 460,
+        "wires": [
+            [
+                "3133b4cc.38233c"
+            ]
+        ]
+    }
+]
