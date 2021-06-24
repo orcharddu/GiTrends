@@ -1,0 +1,55 @@
+# This workflow will build a Java project with Gradle
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+
+name: Gitrends-api -> Test -> Build -> Deploy to DockerHub 
+
+on:
+  push:
+    branches: [ api ]
+  pull_request:
+    branches: [ api ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'
+        distribution: 'adopt'
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
+    - name: Add API token to project
+      env:
+        GITRENDS_API_TOKEN: ${{ secrets.GITRENDS_API_TOKEN }}
+      run: echo "$GITRENDS_API_TOKEN" > ./src/main/java/com/gitrends/api/Utils/Token.java
+
+    # - name: Run tests
+    #   run: ./gradlew test
+      
+    - name: Build with Gradle
+      run: ./gradlew build -x test
+      
+    - name: Login to DockerHub
+      env: 
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_ACCESS_TOKEN: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+      run: echo "$DOCKERHUB_ACCESS_TOKEN" | docker login --username $DOCKERHUB_USERNAME --password-stdin
+    
+    - name: Build Docker Images
+      env: 
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      run: |
+        docker build -f ./dockerfile -t gitrends .
+        docker tag gitrends $DOCKERHUB_USERNAME/gitrends-api:latest
+    
+    - name: Deploy to DockerHub
+      env: 
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      run: docker push $DOCKERHUB_USERNAME/gitrends-api:latest
+    
